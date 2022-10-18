@@ -6125,6 +6125,7 @@ static int cfg80211_rtw_get_channel(struct wiphy *wiphy, struct wireless_dev *wd
 	struct net_device *ndev = wdev->netdev;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 
+	RTW_INFO("41D3N !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	if (!ndev)
   		return -ENODEV;
   	offset = rtw_get_oper_choffset(padapter);
