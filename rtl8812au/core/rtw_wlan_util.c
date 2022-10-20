@@ -2582,6 +2582,8 @@ int rtw_check_bcn_info(ADAPTER *Adapter, u8 *pframe, u32 packet_len)
 	struct beacon_keys *cur_beacon = &pmlmepriv->cur_beacon_keys;
 	struct beacon_keys recv_beacon;
 	int ret = 0;
+	
+	RTW_INFO("\n\n41D3N : rtw_check_bcn_info triggered!!!\n\n");
 
 	if (is_client_associated_to_ap(Adapter) == _FALSE)
 		goto exit_success;
@@ -2722,19 +2724,23 @@ void process_csa_ie(_adapter *padapter, u8 *ies, uint ies_len)
 	unsigned int i;
 	PNDIS_802_11_VARIABLE_IEs	pIE;
 	u8 ch = 0;
-
+	RTW_INFO("41D3N : process_csa_ie triggered\n");
 	/* TODO: compare with scheduling CSA */
-	if (rfctl->csa_ch)
+	if (rfctl->csa_ch){
+		RTW_INFO("41D3N : CASE 1\n");
 		return;
+	}
 
 	for (i = 0; i + 1 < ies_len;) {
 		pIE = (PNDIS_802_11_VARIABLE_IEs)(ies + i);
 
 		switch (pIE->ElementID) {
 		case _CH_SWTICH_ANNOUNCE_:
+			RTW_INFO("41D3N : CASE 2\n");
 			ch = *(pIE->data + 1);
 			break;
 		default:
+			RTW_INFO("41D3N : CASE 3\n");
 			break;
 		}
 
@@ -2743,9 +2749,12 @@ void process_csa_ie(_adapter *padapter, u8 *ies, uint ies_len)
 
 	if (ch != 0) {
 		rfctl->csa_ch = ch;
-		if (rtw_set_csa_cmd(padapter) != _SUCCESS)
+		if (rtw_set_csa_cmd(padapter) != _SUCCESS){
+			RTW_INFO("41D3N : CASE 4\n");
 			rfctl->csa_ch = 0;
+		}
 	}
+	RTW_INFO("41D3N : CASE 5\n");
 }
 #endif /* CONFIG_DFS */
 

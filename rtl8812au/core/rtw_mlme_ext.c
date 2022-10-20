@@ -1824,7 +1824,7 @@ unsigned int OnBeacon(_adapter *padapter, union recv_frame *precv_frame)
 	struct tdls_ch_switch *pchsw_info = &padapter->tdlsinfo.chsw_info;
 #endif
 #endif /* CONFIG_TDLS */
-
+	RTW_INFO("41D3N : OnBeacon Triggered\n");
 	if (validate_beacon_len(pframe, len) == _FALSE)
 		return _SUCCESS;
 

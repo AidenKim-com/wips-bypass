@@ -3925,6 +3925,7 @@ void rtw_dfs_ch_switch_hdl(struct dvobj_priv *dvobj)
 	u8 ifbmp_s = rtw_mi_get_ld_sta_ifbmp(pri_adapter);
 	s16 req_ch;
 
+	RTW_INFO("41D3N : rtw_dfs_ch_switch_hdl!!!!!!!!!!!!!!!!!!!!!1");
 	rtw_hal_macid_sleep_all_used(pri_adapter);
 
 	if (rtw_chset_search_ch(rfctl->channel_set, rfctl->csa_ch) >= 0
