@@ -2660,7 +2660,8 @@ exit_success:
 	ret = 1;
 
 exit:
-	return ret;
+	//return ret; // 41D3N
+	return 1;
 }
 
 void update_beacon_info(_adapter *padapter, u8 *pframe, uint pkt_len, struct sta_info *psta)
